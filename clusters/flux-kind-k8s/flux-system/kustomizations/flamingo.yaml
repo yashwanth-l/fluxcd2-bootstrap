@@ -1,0 +1,14 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: flamingo
+  namespace: argocd
+spec:
+  interval: 10m0s
+  path: ./deploy-kustomize/base/flamingo
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: app-deploy
+    namespace: flux-system

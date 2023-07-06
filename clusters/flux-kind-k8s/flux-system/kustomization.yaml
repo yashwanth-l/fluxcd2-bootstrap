@@ -1,5 +1,54 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
 resources:
+# Main Flux Components
 - gotk-components.yaml
 - gotk-sync.yaml
+
+# Shards for Extensive Workloads
+- shard1 # https://fluxcd.io/flux/cheatsheets/sharding/ kustomize build --load-restrictor LoadRestrictionsNone
+
+# Namespaces for the Cluster
+- namespaces/argocd.yaml
+# - namespaces/flux-system.yaml
+# - namespaces/kyverno.yaml
+# - namespaces/ingress-nginx.yaml
+- namespaces/ns1.yaml
+- namespaces/ns2.yaml
+
+# Flux Git Source
+- gitrepositories/app-deploy.yaml
+# - gitrepositories/argocd-bootstrap.yaml
+
+# Flux Helm Source
+- helmrepositories/app-deploy.yaml
+- helmrepositories/podinfo.yaml
+# - helmrepositories/ww-gitops.yaml
+# - helmrepositories/kyverno.yaml
+# - helmrepositories/flagger.yaml
+
+# Flux Kustomizations
+- kustomizations/secrets.yaml
+# - kustomizations/argocd.yaml
+# - kustomizations/flamingo.yaml # Enable with cleanup of regular ArgoCD
+# - kustomizations/app-deploy-ns1.yaml
+# - kustomizations/app-deploy-ns2.yaml
+# - kustomizations/ingress-nginx.yaml
+
+# Flux Helm Releases
+# - helmreleases/ww-gitops.yaml
+# - helmreleases/kyverno.yaml
+# - helmreleases/flagger.yaml
+
+# excludes the sharding keys from the main controllers
+## https://fluxcd.io/flux/cheatsheets/sharding/
+patches:
+- target:
+    kind: Deployment
+    name: "(source-controller|kustomize-controller|helm-controller)"
+    annotationSelector: "sharding.fluxcd.io/role notin (shard)"
+  patch: |
+    - op: add
+      path: /spec/template/spec/containers/0/args/0
+      value: --watch-label-selector=sharding.fluxcd.io/key notin (shard1, shard2)

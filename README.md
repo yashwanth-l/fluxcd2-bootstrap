@@ -1,1 +1,0 @@
-# fluxcd2-bootstrap

@@ -1,0 +1,13 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: argocd-bootstrap
+  namespace: argocd
+spec:
+  interval: 5m0s
+  ref:
+    branch: main
+  secretRef:
+    name: argocd-github-repo-key
+  url: https://github.com/yashwanth-l/argocd-bootstrap

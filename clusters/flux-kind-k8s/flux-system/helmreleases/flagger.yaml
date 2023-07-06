@@ -1,0 +1,72 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: flagger
+  namespace: flagger-system
+spec:
+  chart:
+    spec:
+      chart: flagger
+      version: "1.31.0"
+      sourceRef:
+        kind: HelmRepository
+        name: flagger
+        namespace: flagger-system
+  interval: 5m
+  releaseName: flagger
+  values: # https://github.com/fluxcd/flagger/tree/v1.31.0/charts/flagger#configuration
+    image:
+      repository: ghcr.io/fluxcd/flagger
+      tag: 1.12.1
+      pullPolicy: IfNotPresent
+      pullSecret:
+    logLevel: info
+    podPriorityClassName: ""
+    metricsServer: "http://prometheus-operator-prometheus.monitoring:9090"
+    meshProvider: "nginx"
+    namespace: ""
+    selectorLabels: ""
+    configTracking:
+      enabled: true
+    ingressAnnotationsPrefix: ""
+    ingressClass: ""
+    securityContext:
+      enabled: true
+      context:
+        readOnlyRootFilesystem: true
+        runAsUser: 10001
+    eventWebhook: ""
+    podMonitor:
+      enabled: true
+      namespace:
+      interval: 60s
+      additionalLabels: {}
+    env: []
+    leaderElection:
+      enabled: false
+    serviceAccount:
+      create: true
+      name: ""
+      annotations: {}
+    rbac:
+      create: true
+      pspEnabled: false
+    crd:
+      create: false
+    nameOverride: ""
+    fullnameOverride: ""
+    resources:
+      limits:
+        memory: "512Mi"
+        cpu: "1000m"
+      requests:
+        memory: "32Mi"
+        cpu: "10m"
+    nodeSelector: {}
+    tolerations: []
+    prometheus:
+      install: true
+    kubeconfigQPS: ""
+    kubeconfigBurst: ""
+    podDisruptionBudget:
+      enabled: false

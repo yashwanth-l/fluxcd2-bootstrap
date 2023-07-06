@@ -1,0 +1,28 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app-deploy-helm-ns2
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./deploy-helm/flux-kind-k8s/ns2
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: app-deploy
+    namespace: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app-deploy-ks-ns2
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./deploy-kustomize/flux-kind-k8s/ns2
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: app-deploy
+    namespace: flux-system
