@@ -30,7 +30,7 @@ resources:
 
 # Flux Kustomizations
 - kustomizations/secrets.yaml
-# - kustomizations/argocd.yaml
+- kustomizations/argocd.yaml
 # - kustomizations/flamingo.yaml # Enable with cleanup of regular ArgoCD
 # - kustomizations/app-deploy-ns1.yaml
 # - kustomizations/app-deploy-ns2.yaml
