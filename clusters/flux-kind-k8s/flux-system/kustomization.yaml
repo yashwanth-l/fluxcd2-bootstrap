@@ -10,7 +10,8 @@ resources:
 - shard1 # https://fluxcd.io/flux/cheatsheets/sharding/ kustomize build --load-restrictor LoadRestrictionsNone
 
 # Namespaces for the Cluster
-- namespaces/argocd.yaml
+# - namespaces/argocd.yaml
+# - namespaces/argo-rollouts.yaml
 # - namespaces/flux-system.yaml
 # - namespaces/kyverno.yaml
 # - namespaces/ingress-nginx.yaml
@@ -19,7 +20,7 @@ resources:
 
 # Flux Git Source
 - gitrepositories/app-deploy.yaml
-- gitrepositories/argocd-bootstrap.yaml
+# - gitrepositories/argo-bootstrap.yaml
 
 # Flux Helm Source
 - helmrepositories/app-deploy.yaml
@@ -30,7 +31,8 @@ resources:
 
 # Flux Kustomizations
 - kustomizations/secrets.yaml
-- kustomizations/argocd.yaml
+# - kustomizations/argocd.yaml
+# - kustomizations/argorollouts.yaml
 # - kustomizations/flamingo.yaml # Enable with cleanup of regular ArgoCD
 # - kustomizations/app-deploy-ns1.yaml
 # - kustomizations/app-deploy-ns2.yaml
