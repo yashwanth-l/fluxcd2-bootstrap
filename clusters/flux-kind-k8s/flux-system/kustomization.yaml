@@ -19,7 +19,7 @@ resources:
 
 # Flux Git Source
 - gitrepositories/app-deploy.yaml
-# - gitrepositories/argocd-bootstrap.yaml
+- gitrepositories/argocd-bootstrap.yaml
 
 # Flux Helm Source
 - helmrepositories/app-deploy.yaml
