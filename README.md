@@ -129,10 +129,20 @@ At this point the the repo contains the below:
 
     ```sh
     # Encryption
-    SOPS_AGE_KEY_FILE=$HOME/age.agekey sops --encrypt --in-place --verbose <someFile>
+    SOPS_AGE_KEY_FILE=$HOME/age.agekey \
+    sops \
+        --encrypt \
+        --in-place \
+        --verbose \
+        <someFile>
 
     # Decryption
-     SOPS_AGE_KEY_FILE=$HOME/age.agekey sops --decrypt --in-place --verbose <someFile>
+    SOPS_AGE_KEY_FILE=$HOME/age.agekey \
+    sops \
+        --decrypt \
+        --in-place \
+        --verbose \
+        <someFile>
     ```
 
   - **shard1:** This is a feature of FluxCD which can be used when you use flux to deploy tons of applications as explained [here](https://fluxcd.io/flux/cheatsheets/sharding/)
