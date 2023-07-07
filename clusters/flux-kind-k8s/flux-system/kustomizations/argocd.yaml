@@ -6,9 +6,9 @@ metadata:
   namespace: argocd
 spec:
   interval: 10m0s
-  path: ./clusters/argocd-kind-k8s/argocd
+  path: ./clusters/argo-kind-k8s/argocd
   prune: true
   sourceRef:
     kind: GitRepository
-    name: argocd-bootstrap
-    namespace: argocd
+    name: argo-bootstrap
+    namespace: flux-system
