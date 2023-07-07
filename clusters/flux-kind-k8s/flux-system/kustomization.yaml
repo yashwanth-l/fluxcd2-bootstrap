@@ -7,7 +7,7 @@ resources:
 - gotk-sync.yaml
 
 # Shards for Extensive Workloads
-- shard1 # https://fluxcd.io/flux/cheatsheets/sharding/ kustomize build --load-restrictor LoadRestrictionsNone
+# - shard1 # https://fluxcd.io/flux/cheatsheets/sharding/ kustomize build --load-restrictor LoadRestrictionsNone
 
 # Namespaces for the Cluster
 # - namespaces/argocd.yaml
