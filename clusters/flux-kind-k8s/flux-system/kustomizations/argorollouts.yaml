@@ -2,13 +2,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: flamingo
-  namespace: argocd
+  name: argo-rollouts
+  namespace: argo-rollouts
 spec:
   interval: 10m0s
-  path: ./deploy-kustomize/base/flamingo
+  path: ./clusters/argo-kind-k8s/argo-rollouts
   prune: true
   sourceRef:
     kind: GitRepository
-    name: fluxcd-deploy-feeder
+    name: argo-bootstrap
     namespace: flux-system
