@@ -19,11 +19,11 @@ resources:
 - namespaces/ns2.yaml
 
 # Flux Git Source
-- gitrepositories/app-deploy.yaml
+- gitrepositories/fluxcd-deploy-feeder.yaml
 # - gitrepositories/argo-bootstrap.yaml
 
 # Flux Helm Source
-- helmrepositories/app-deploy.yaml
+- helmrepositories/fluxcd-helm-repo.yaml
 - helmrepositories/podinfo.yaml
 # - helmrepositories/ww-gitops.yaml
 # - helmrepositories/ww-tf-controller.yaml
