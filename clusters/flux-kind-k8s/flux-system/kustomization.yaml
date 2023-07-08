@@ -7,7 +7,7 @@ resources:
 - gotk-sync.yaml
 
 # Shards for Extensive Workloads
-- shard1 # https://fluxcd.io/flux/cheatsheets/sharding/ kustomize build --load-restrictor LoadRestrictionsNone
+# - shard1 # https://fluxcd.io/flux/cheatsheets/sharding/ kustomize build --load-restrictor LoadRestrictionsNone
 
 # Namespaces for the Cluster
 # - namespaces/argocd.yaml
@@ -33,6 +33,7 @@ resources:
 - kustomizations/secrets.yaml
 # - kustomizations/argocd.yaml
 # - kustomizations/argorollouts.yaml
+# - kustomizations/argoworkflows.yaml
 # - kustomizations/flamingo.yaml # Enable with cleanup of regular ArgoCD
 # - kustomizations/app-deploy-ns1.yaml
 # - kustomizations/app-deploy-ns2.yaml
