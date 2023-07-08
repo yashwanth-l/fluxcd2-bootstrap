@@ -26,6 +26,7 @@ resources:
 - helmrepositories/app-deploy.yaml
 - helmrepositories/podinfo.yaml
 # - helmrepositories/ww-gitops.yaml
+# - helmrepositories/ww-tf-controller.yaml
 # - helmrepositories/kyverno.yaml
 # - helmrepositories/flagger.yaml
 
@@ -41,6 +42,7 @@ resources:
 
 # Flux Helm Releases
 # - helmreleases/ww-gitops.yaml
+# - helmreleases/ww-tf-controller.yaml
 # - helmreleases/kyverno.yaml
 # - helmreleases/flagger.yaml
 
