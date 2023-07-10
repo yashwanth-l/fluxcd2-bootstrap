@@ -15,6 +15,7 @@ resources:
 # - namespaces/flux-system.yaml
 # - namespaces/kyverno.yaml
 # - namespaces/ingress-nginx.yaml
+# - namespaces/actions-runner-system.yaml
 - namespaces/ns1.yaml
 - namespaces/ns2.yaml
 
@@ -29,6 +30,7 @@ resources:
 # - helmrepositories/ww-tf-controller.yaml
 # - helmrepositories/kyverno.yaml
 # - helmrepositories/flagger.yaml
+# - helmrepositories/actions-runner-controller.yaml
 
 # Flux Kustomizations
 - kustomizations/secrets.yaml
@@ -45,6 +47,7 @@ resources:
 # - helmreleases/ww-tf-controller.yaml
 # - helmreleases/kyverno.yaml
 # - helmreleases/flagger.yaml
+# - helmreleases/actions-runner-controller.yaml
 
 # excludes the sharding keys from the main controllers
 ## https://fluxcd.io/flux/cheatsheets/sharding/
