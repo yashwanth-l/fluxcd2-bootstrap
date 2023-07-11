@@ -1,0 +1,16 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: namespace-configuration-operator
+  namespace: namespace-configuration-operator
+spec:
+  chart:
+    spec:
+      chart: namespace-configuration-operator
+      sourceRef:
+        kind: HelmRepository
+        name: namespace-configuration-operator
+        namespace: flux-system
+  interval: 5m
+  releaseName: namespace-configuration-operator
