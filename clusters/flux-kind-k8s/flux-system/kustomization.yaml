@@ -19,6 +19,8 @@ resources:
 # - namespaces/actions-runner-system.yaml
 # - namespaces/namespace-configuration-operator.yaml
 # - namespaces/gatekeeper-system.yaml
+# - namespaces/external-dns.yaml
+# - namespaces/cert-manager.yaml
 - namespaces/ns1.yaml
 - namespaces/ns2.yaml
 
@@ -36,6 +38,9 @@ resources:
 # - helmrepositories/actions-runner-controller.yaml
 # - helmrepositories/namespace-configuration-operator.yaml
 # - helmrepositories/open-policy-agent-gatekeeper.yaml
+# - helmrepositories/external-dns.yaml
+# - helmrepositories/cert-manager.yaml
+# - helmrepositories/secrets-store-csi-driver.yaml
 
 # Flux Kustomizations
 - kustomizations/secrets.yaml
@@ -55,6 +60,9 @@ resources:
 # - helmreleases/actions-runner-controller.yaml
 # - helmreleases/namespace-configuration-operator.yaml
 # - helmreleases/open-policy-agent-gatekeeper.yaml
+# - helmreleases/external-dns.yaml
+# - helmreleases/cert-manager.yaml
+# - helmreleases/secrets-store-csi-driver.yaml
 
 # excludes the sharding keys from the main controllers
 ## https://fluxcd.io/flux/cheatsheets/sharding/
