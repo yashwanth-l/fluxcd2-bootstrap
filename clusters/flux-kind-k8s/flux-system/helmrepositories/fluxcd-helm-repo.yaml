@@ -1,11 +1,9 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: fluxcd-helm-repo
   namespace: flux-system
 spec:
   interval: 5m0s
-  secretRef:
-    name: flux-github-helm-key
   url: https://yashwanth-l.github.io/fluxcd-helm-repo/

@@ -3,13 +3,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-# Main Flux Components
-- gotk-components.yaml
-- gotk-sync.yaml
-
-# Shards for Extensive Workloads
-# - shard1 # https://fluxcd.io/flux/cheatsheets/sharding/ kustomize build --load-restrictor LoadRestrictionsNone
-
 # Namespaces for the Cluster
 # - namespaces/argocd.yaml
 # - namespaces/argo-rollouts.yaml
@@ -24,11 +17,11 @@ resources:
 - namespaces/ns1.yaml
 - namespaces/ns2.yaml
 
-# Flux Git Source
+# Custom GitRepositories
 - gitrepositories/fluxcd-deploy-feeder.yaml
 # - gitrepositories/argo-bootstrap.yaml
 
-# Flux Helm Source
+# Custom HelmRepositories
 - helmrepositories/fluxcd-helm-repo.yaml
 - helmrepositories/podinfo.yaml
 # - helmrepositories/ww-gitops.yaml
@@ -42,7 +35,7 @@ resources:
 # - helmrepositories/cert-manager.yaml
 # - helmrepositories/secrets-store-csi-driver.yaml
 
-# Flux Kustomizations
+# Custom Kustomizations
 - kustomizations/secrets.yaml
 # - kustomizations/argocd.yaml
 # - kustomizations/argorollouts.yaml
@@ -52,7 +45,7 @@ resources:
 # - kustomizations/app-deploy-ns2.yaml
 # - kustomizations/ingress-nginx.yaml
 
-# Flux Helm Releases
+# Custom HelmReleases
 # - helmreleases/ww-gitops.yaml
 # - helmreleases/ww-tf-controller.yaml
 # - helmreleases/kyverno.yaml
@@ -64,14 +57,6 @@ resources:
 # - helmreleases/cert-manager.yaml
 # - helmreleases/secrets-store-csi-driver.yaml
 
-# excludes the sharding keys from the main controllers
-## https://fluxcd.io/flux/cheatsheets/sharding/
-patches:
-- target:
-    kind: Deployment
-    name: "(source-controller|kustomize-controller|helm-controller)"
-    annotationSelector: "sharding.fluxcd.io/role notin (shard)"
-  patch: |
-    - op: add
-      path: /spec/template/spec/containers/0/args/0
-      value: --watch-label-selector=sharding.fluxcd.io/key notin (shard1, shard2)
+# Custom Providers
+
+# Custom Alerts
